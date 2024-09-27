@@ -114,7 +114,7 @@ func runDanger(version dangerSwiftVersion: String, logger: Logger) throws {
         libArgs += ["-lDanger"] // Eval the code with the Target Danger added
     }
 
-    logger.debug("Preparing to compile")
+    logger.logError("Preparing to compile")
     let tempDangerfilePath = tmpPath + "_tmp_dangerfile.swift"
 
     let generator = DangerFileGenerator()
@@ -148,7 +148,8 @@ func runDanger(version dangerSwiftVersion: String, logger: Logger) throws {
         let swiftC = try executor.spawn("command", arguments: ["-v", "swift"])
     #endif
 
-    logger.debug("Running: \(swiftC) \(args.joined(separator: " "))")
+    logger.logError("Running: \(swiftC) \(args.joined(separator: " "))")
+
 
     // Create a process to eval the Swift file
     let proc = Process()
@@ -167,7 +168,7 @@ func runDanger(version dangerSwiftVersion: String, logger: Logger) throws {
     proc.launch()
     proc.waitUntilExit()
 
-    logger.debug("Completed evaluation")
+    logger.logError("Completed evaluation")
 
     if proc.terminationStatus != 0 {
         logger.logError("Dangerfile eval failed at \(dangerfilePath)")
