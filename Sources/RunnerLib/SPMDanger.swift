@@ -32,7 +32,7 @@ public struct SPMDanger {
             return nil
         }
 
-        logger.logError("depsLibName: \(depsLibName)")
+        print("depsLibName: \(depsLibName)")
     }
 
     public func buildDependencies(executor: ShellExecuting = ShellExecutor()) {
