@@ -9,11 +9,11 @@ import Logger
 
 // MARK: - DangerRunner
 
-final class DangerRunner {
-    static let shared = DangerRunner()
+public final class DangerRunner {
+    public static let shared = DangerRunner()
 
     let logger: Logger
-    let dsl: DangerDSL
+    public let dsl: DangerDSL
     let outputPath: String
     var results = DangerResults() {
         didSet {
